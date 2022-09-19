@@ -6,4 +6,47 @@ body {
 
 h1 {
     font-size: 200%;
+    
+
+}
+
+ul{
+    padding: 5px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    margin: 10% 25%; 
+    align-items: center;
+    padding: 2%;
+    flex-wrap: wrap;
+    border-width: 5px;
+    border-color:rgb(192, 194, 65);
+    border-style: double;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+.quizIntro {
+    justify-content: center;
+}
+
+.gitHubimg {
+    max-width: 200px;
+    padding: 2px;
 }
