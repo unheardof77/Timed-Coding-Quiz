@@ -50,3 +50,25 @@ footer {
     max-width: 200px;
     padding: 2px;
 }
+
+#quizBegin {
+    background-color:rgb(81, 72, 90);
+    border-color: rgb(192, 194, 65);
+    border-style: solid;
+    margin-top: 2%;
+    padding: 1px;
+    color: rgb(238, 99, 185);
+}
+
+.highScores {
+    background-color:rgb(81, 72, 90);
+    border-color: rgb(192, 194, 65);
+    border-style: solid;
+    padding: 1px;
+    color: rgb(238, 99, 185);
+}
+
+#quizBegin:hover, .highScores:hover {
+    border-color: rgb(55, 182, 72);
+    cursor:pointer;
+}
