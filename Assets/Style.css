@@ -14,13 +14,22 @@ ul{
     padding: 5px;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#timeClock {
+    color: rgb(55, 182, 72);
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-section {
+.mainSection {
     display: flex;
     justify-content: center;
     margin: 10% 25%; 
@@ -51,7 +60,7 @@ footer {
     padding: 2px;
 }
 
-button {
+button, input {
     background-color:rgb(81, 72, 90);
     border-color: rgb(192, 194, 65);
     border-style: solid;
@@ -64,6 +73,8 @@ button:hover{
     border-color: rgb(55, 182, 72);
     cursor:pointer;
 }
+
+
 
 
 
