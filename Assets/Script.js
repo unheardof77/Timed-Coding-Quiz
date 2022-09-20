@@ -40,12 +40,12 @@ function createEndQuiz(){
 function renderQuestions(){
     $quizSection.innerHTML = ""; 
     let $h1 = document.createElement("h1"); 
-    $h1.textContent = `${questions[index].question}`; 
-    $quizSection.appendChild($h1);  
     let $buttonTrue = document.createElement("button");
     let $buttonFalse = document.createElement("button");
+    $h1.textContent = `${questions[index].question}`; 
     $buttonTrue.textContent = `${questions[index].correct}`;
     $buttonFalse.textContent = `${questions[index].wrong}`;
+    $quizSection.appendChild($h1);  
     $quizSection.appendChild($buttonTrue);
     $quizSection.appendChild($buttonFalse);
     $buttonTrue.addEventListener("click", nextQuestion);
@@ -72,5 +72,19 @@ document.querySelector("form").addEventListener("submit", function(e){
     e.preventDefault();
     let $input =document.querySelector("form")[0];
     const highScore = {score: $runningTime, initials: $input.value};
-    localStorage.setItem("highScoreInfo", JSON.stringify(highScore)); 
+    let highScoreInfo = [JSON.parse(localStorage.getItem("highScoreInfo"))];
+    highScoreInfo.push(highScore);
+    localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
+    window.location.assign("./highScore.html");
 });
+
+//all code above is for index file
+//code below is for high scores file
+function secondPage(){
+let $listSection = document.getElementById(`scoreListH`);
+let $li = document.createElement("li");
+let scores = JSON.parse(localStorage.getItem("highScore"));
+$li.textContent = "test";
+$listSection.appendChild($li);
+console.log(scores)
+};
