@@ -1,8 +1,17 @@
-
 let $listSection = document.getElementById(`scoreListH`);
-let $li = document.createElement("li");
 let scores = JSON.parse(localStorage.getItem("highScoreInfo"));
-$li.textContent = scores.initials + " " + scores.score;
-$listSection.appendChild($li);
-console.log(scores)
+const clearButton = document.getElementById(`clearScoreButtonH`);
 
+function clearScores(){
+    $listSection.innerHTML = ""
+    
+    localStorage.clear()
+};
+
+for(i = 0; i < scores.length; i++){
+    let $li = document.createElement("li");
+    $li.textContent = scores[i].initials + " " + scores[i].score;
+    $listSection.appendChild($li);
+};
+
+clearButton.addEventListener(`click`, clearScores)

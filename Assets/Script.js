@@ -73,18 +73,19 @@ document.querySelector("form").addEventListener("submit", function(e){
     let $input =document.querySelector("form")[0];
     const highScore = {score: $runningTime, initials: $input.value};
     let highScoreInfo = [JSON.parse(localStorage.getItem("highScoreInfo"))];
-    highScoreInfo.push(highScore);
-    localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
-    window.location.assign("./highScore.html");
+    if(highScoreInfo = null){
+
+        console.log("if triggered")
+        highScoreInfo.push(highScore);
+        localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
+        window.location.assign("./highScore.html");
+    }else{
+        console.log("else triggered")
+        highScoreInfo = highScore;
+        localStorage.clear();
+        localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
+        window.location.assign("./highScore.html");
+
+    }
 });
 
-//all code above is for index file
-//code below is for high scores file
-function secondPage(){
-let $listSection = document.getElementById(`scoreListH`);
-let $li = document.createElement("li");
-let scores = JSON.parse(localStorage.getItem("highScore"));
-$li.textContent = "test";
-$listSection.appendChild($li);
-console.log(scores)
-};
