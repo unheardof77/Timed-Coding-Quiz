@@ -5,9 +5,9 @@ let index = 0;
 let $runningTime = 0;
 // array of questions below.
 const questions = [
-    { question: "Place holder question",
-    correct: "correct answer",
-    wrong: "Wrong answer",},
+    { question: "What language is this? <h1>",
+    correct: "HTML",
+    wrong: "CSS",},
     
     { question: "Another question", 
     correct: "right answer",
@@ -72,20 +72,28 @@ document.querySelector("form").addEventListener("submit", function(e){
     e.preventDefault();
     let $input =document.querySelector("form")[0];
     const highScore = {score: $runningTime, initials: $input.value};
-    let highScoreInfo = [JSON.parse(localStorage.getItem("highScoreInfo"))];
-    if(highScoreInfo = null){
-
-        console.log("if triggered")
-        highScoreInfo.push(highScore);
-        localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
-        window.location.assign("./highScore.html");
-    }else{
-        console.log("else triggered")
-        highScoreInfo = highScore;
-        localStorage.clear();
-        localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
-        window.location.assign("./highScore.html");
-
+    if(JSON.parse(localStorage.getItem("highScoreInfo"))){
+        highScoreCloudInfo = JSON.parse(localStorage.getItem("highScoreInfo"))
+    } else {
+        highScoreCloudInfo = [];
     }
+
+    highScoreCloudInfo.push(highScore);
+    localStorage.setItem("highScoreInfo", JSON.stringify(highScoreCloudInfo));
+    window.location.assign("./highScore.html");
+
+    // if(highScoreInfo){
+    //     console.log("if triggered")
+    //     highScoreInfo.push(highScore);
+    //     localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
+    //    window.location.assign("./highScore.html");
+
+    // }else{
+    //     console.log("else triggered")
+    //     highScoreInfo = highScore;
+    //     localStorage.clear();
+    //     localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
+    //     window.location.assign("./highScore.html");
+    // };
 });
 

@@ -5,7 +5,7 @@ const clearButton = document.getElementById(`clearScoreButtonH`);
 function clearScores(){
     $listSection.innerHTML = ""
     
-    localStorage.clear()
+    localStorage.removeItem("highScoreInfo")
 };
 
 for(i = 0; i < scores.length; i++){
