@@ -7,11 +7,19 @@ let $runningTime = 0;
 const questions = [
     { question: "What language is this? <h1>",
     correct: "HTML",
-    wrong: "CSS",},
+    wrong: "CSS",
+    secondWrong: "JavaScript"},
     
-    { question: "Another question", 
-    correct: "right answer",
-    wrong: "Incorrect answer"}
+    { question: "What is CSS?", 
+    correct: "A programming language that adds style to a website.",
+    wrong: "A programming language that adds interactivity to a website.",
+    secondWrong: "A programming language that structures websites."},
+
+    {question: "What is the proper syntax to create a function in JavaScript?",
+    correct: "function steve(){};",
+    wrong: "steve = function(){};",
+    secondWrong: "function steve{}();"}
+    
 ];
 //Function that add times to the clock when question is missed.
 function tryAgain(){
@@ -25,6 +33,29 @@ function startTime(){
             $timer.textContent = $runningTime;
         }, 1000);
 };
+
+function addChildren($buttonTrue, $buttonFalse, $buttonAlsoWrong){
+    const storedIndex = []
+    while (storedIndex.length < 3){ // [ 0 ]
+        let randomIndex = Math.floor(Math.random()*3) // 0, 1, 1
+        if(storedIndex.includes(randomIndex)){
+            continue;
+        }else{
+            storedIndex.push(randomIndex);  // [ 0, 1 ]
+            if(randomIndex== 0){
+                $quizSection.appendChild($buttonTrue);
+                $buttonTrue.addEventListener("click", nextQuestion);
+            }else if(randomIndex== 1){
+                $quizSection.appendChild($buttonFalse);
+                $buttonFalse.addEventListener("click", tryAgain);
+            }else {
+                $quizSection.appendChild($buttonAlsoWrong);
+                $buttonAlsoWrong.addEventListener("click", tryAgain);
+            }
+        }
+    }
+};
+
 //Creates the end quiz screen that allows you too enter your initials.
 function createEndQuiz(){
     let $h1 = document.createElement("h1");
@@ -42,14 +73,13 @@ function renderQuestions(){
     let $h1 = document.createElement("h1"); 
     let $buttonTrue = document.createElement("button");
     let $buttonFalse = document.createElement("button");
+    let $buttonAlsoWrong = document.createElement("button");
     $h1.textContent = `${questions[index].question}`; 
     $buttonTrue.textContent = `${questions[index].correct}`;
     $buttonFalse.textContent = `${questions[index].wrong}`;
+    $buttonAlsoWrong.textContent = `${questions[index].secondWrong}`;
     $quizSection.appendChild($h1);  
-    $quizSection.appendChild($buttonTrue);
-    $quizSection.appendChild($buttonFalse);
-    $buttonTrue.addEventListener("click", nextQuestion);
-    $buttonFalse.addEventListener("click", tryAgain);
+    addChildren($buttonTrue, $buttonFalse, $buttonAlsoWrong);
 };
 //function that checks if out of questions and makes highScore screen then saves data.
 function nextQuestion(){
@@ -72,28 +102,9 @@ document.querySelector("form").addEventListener("submit", function(e){
     e.preventDefault();
     let $input =document.querySelector("form")[0];
     const highScore = {score: $runningTime, initials: $input.value};
-    if(JSON.parse(localStorage.getItem("highScoreInfo"))){
-        highScoreCloudInfo = JSON.parse(localStorage.getItem("highScoreInfo"))
-    } else {
-        highScoreCloudInfo = [];
-    }
-
+    let highScoreCloudInfo =  JSON.parse(localStorage.getItem("highScoreInfo")) || []
     highScoreCloudInfo.push(highScore);
     localStorage.setItem("highScoreInfo", JSON.stringify(highScoreCloudInfo));
     window.location.assign("./highScore.html");
-
-    // if(highScoreInfo){
-    //     console.log("if triggered")
-    //     highScoreInfo.push(highScore);
-    //     localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo)); 
-    //    window.location.assign("./highScore.html");
-
-    // }else{
-    //     console.log("else triggered")
-    //     highScoreInfo = highScore;
-    //     localStorage.clear();
-    //     localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
-    //     window.location.assign("./highScore.html");
-    // };
 });
 
