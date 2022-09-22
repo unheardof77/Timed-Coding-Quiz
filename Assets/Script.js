@@ -18,7 +18,25 @@ const questions = [
     {question: "What is the proper syntax to create a function in JavaScript?",
     correct: "function steve(){};",
     wrong: "steve = function(){};",
-    secondWrong: "function steve{}();"}
+    secondWrong: "function steve{}();"},
+
+    {question: "Where do you link a CSS file in an HTML document?",
+    correct: "The head.",
+    wrong: "The footer.",
+    secondWrong: "It doesn't need to be linked."
+    },
+
+    {question: "What method is used to add a variable or other applicable element(s) to local storage?",
+    correct: "localStorage.setItem()",
+    wrong: "localStorage.getItem()",
+    secondWrong: "JSON.stringify()"
+    },
+
+    {question: "Which of these is NOT an array method?",
+    correct: "Array.prototype.upshift()",
+    wrong: "Array.prototype.reverse",
+    secondWrong: "Array.prototype.reduceRight()"
+    }
     
 ];
 //Function that add times to the clock when question is missed.

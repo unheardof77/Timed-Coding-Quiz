@@ -65,8 +65,9 @@ button, input {
     border-color: rgb(192, 194, 65);
     border-style: solid;
     margin-top: 2%;
-    padding: 1px;
+    padding: 3px;
     color: rgb(238, 99, 185);
+    font-size: 20px;
 }
 
 button:hover{
