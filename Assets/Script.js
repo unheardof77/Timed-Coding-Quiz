@@ -33,7 +33,7 @@ function startTime(){
             $timer.textContent = $runningTime;
         }, 1000);
 };
-
+//makes option buttons not in the same spot every time.
 function addChildren($buttonTrue, $buttonFalse, $buttonAlsoWrong){
     const storedIndex = []
     while (storedIndex.length < 3){ // [ 0 ]
@@ -55,7 +55,6 @@ function addChildren($buttonTrue, $buttonFalse, $buttonAlsoWrong){
         }
     }
 };
-
 //Creates the end quiz screen that allows you too enter your initials.
 function createEndQuiz(){
     let $h1 = document.createElement("h1");
