@@ -91,6 +91,9 @@ function renderQuestions(){
     let $buttonTrue = document.createElement("button");
     let $buttonFalse = document.createElement("button");
     let $buttonAlsoWrong = document.createElement("button");
+    $buttonTrue.classList.add("questionButton")
+    $buttonFalse.classList.add("questionButton")
+    $buttonAlsoWrong.classList.add("questionButton")
     $h1.textContent = `${questions[index].question}`; 
     $buttonTrue.textContent = `${questions[index].correct}`;
     $buttonFalse.textContent = `${questions[index].wrong}`;
